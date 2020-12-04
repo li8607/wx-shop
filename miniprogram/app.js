@@ -129,5 +129,33 @@ App({
         }
       }
     })
+  },
+
+  toPayTap:function(obj) {
+    wx.cloud.callFunction({
+      name: 'payShopcart',
+      data: {
+        ids: obj.ids
+      },
+      success(res) {
+        if (obj != null && obj.success != null) {
+          obj.success();
+        }
+      }
+    })
+  },
+
+  toDoneOrder:function(obj) {
+    wx.cloud.callFunction({
+      name: 'doneShopcart',
+      data:{
+        ids:obj.ids
+      },
+      success(res){
+        if (obj != null && obj.success != null) {
+          obj.success();
+        }
+      }
+    })
   }
 })
